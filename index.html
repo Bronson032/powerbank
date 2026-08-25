@@ -17,38 +17,38 @@
     margin: 0 auto;
     padding: 20px;
   }
+  .badge {
+    display: inline-block;
+    background: #2e9e44;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
   h1 {
     font-size: 22px;
-    margin-top: 20px;
+    margin: 10px 0 20px;
     color: #222222;
     line-height: 1.4;
   }
-  .gallery-item {
-    margin: 20px 0;
+  h2 {
+    font-size: 19px;
+    color: #222222;
+    margin-top: 40px;
   }
-  .gallery-item.main img {
-    border: 3px solid #2e9e44;
-  }
-  .gallery-item img {
+  .main-photo img {
     width: 100%;
     border-radius: 12px;
-    cursor: pointer;
-  }
-  .gallery-caption {
-    text-align: left;
-    font-size: 16px;
-    color: #333333;
-    background: #f0f0f0;
-    border-radius: 8px;
-    padding: 12px 16px;
-    margin-top: 8px;
+    border: 3px solid #2e9e44;
   }
   .price-row {
     display: flex;
     justify-content: center;
     align-items: baseline;
     gap: 12px;
-    margin: 15px 0;
+    margin: 18px 0;
   }
   .old-price {
     font-size: 20px;
@@ -69,10 +69,99 @@
     border-radius: 12px;
     font-size: 20px;
     font-weight: bold;
-    margin: 25px 0;
+    margin: 20px 0;
   }
   .buy-button:active {
     background: #237a35;
+  }
+  .desc-block {
+    text-align: left;
+    background: #f7f7f7;
+    border-radius: 12px;
+    padding: 18px;
+    margin: 20px 0;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .gallery-item {
+    margin: 20px 0;
+  }
+  .gallery-item img {
+    width: 100%;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  .gallery-caption {
+    text-align: left;
+    font-size: 15px;
+    color: #333333;
+    background: #f0f0f0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 8px;
+  }
+  .tiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .tile {
+    background: #f7f7f7;
+    border-radius: 12px;
+    padding: 16px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #222222;
+  }
+  .tile .emoji {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .specs {
+    text-align: left;
+    background: #f7f7f7;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 20px 0;
+    font-size: 15px;
+    line-height: 1.9;
+  }
+  .steps {
+    text-align: left;
+    margin: 20px 0;
+  }
+  .step {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: #f7f7f7;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #2e9e44;
+    color: #ffffff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .step-text b {
+    display: block;
+    font-size: 15px;
+    color: #222222;
+    margin-bottom: 3px;
+  }
+  .step-text span {
+    font-size: 13px;
+    color: #666666;
   }
   .footer {
     font-size: 13px;
@@ -100,16 +189,24 @@
 </head>
 <body>
   <div class="container">
-    <h1>Повербанк Neobatta N-918<br>+ швидкісний кабель у подарунок</h1>
+
+    <div class="badge">Швидкісний кабель у подарунок</div>
+    <h1>Повербанк Neobatta N-918<br>20000 мАг, швидка зарядка 100Вт</h1>
+
+    <div class="main-photo">
+      <img src="photo1.jpg" alt="Повербанк Neobatta N-918" onclick="openLightbox('photo1.jpg')">
+    </div>
 
     <div class="price-row">
       <span class="old-price">2999 грн</span>
       <span class="price">2199 грн</span>
     </div>
 
-    <div class="gallery-item main">
-      <img src="photo1.jpg" alt="Повербанк Neobatta N-918" onclick="openLightbox('photo1.jpg')">
-      <div class="gallery-caption">Об'єм акумулятора 20000 мАг вистачить на кілька повних зарядок телефону</div>
+    <a class="buy-button" href="https://t.me/dropshiporders2026_bot">Замовити зараз</a>
+
+    <h2>Якість та потужність в одному пристрої</h2>
+    <div class="desc-block">
+      Повербанк Neobatta N-918 має реальну ємність <b>20 000 мАг</b> — цього вистачить на кілька повних зарядок телефону поспіль. Функція швидкої зарядки <b>Quick Charge 100Вт</b> заряджає пристрій у рази швидше за звичайні зарядні. Компактний корпус зручно поміщається в сумку або кишеню, а кабель для зарядки йде у подарунок до кожного замовлення.
     </div>
 
     <div class="gallery-item">
@@ -117,14 +214,47 @@
       <div class="gallery-caption">Кабель у комплекті як подарунок</div>
     </div>
 
+    <h2>Переваги</h2>
+    <div class="tiles">
+      <div class="tile"><span class="emoji">⚡</span>Швидка зарядка 100Вт</div>
+      <div class="tile"><span class="emoji">🔋</span>Ємність 20000 мАг</div>
+      <div class="tile"><span class="emoji">🎁</span>Кабель у подарунок</div>
+      <div class="tile"><span class="emoji">📱</span>Компактний та легкий</div>
+    </div>
+
     <div class="gallery-item">
       <img src="photo4.jpg" alt="фото 4" onclick="openLightbox('photo4.jpg')">
       <div class="gallery-caption">Компактний та зручний для щоденного використання</div>
     </div>
 
+    <h2>Характеристики</h2>
+    <div class="specs">
+      <b>Модель:</b> Neobatta N-918<br>
+      <b>Ємність:</b> 20 000 мАг<br>
+      <b>Швидка зарядка:</b> Quick Charge 100Вт<br>
+      <b>Комплектація:</b> повербанк + кабель у подарунок<br>
+      <b>Оплата:</b> при отриманні
+    </div>
+
     <div class="gallery-item">
       <img src="photo5.jpg" alt="фото 5" onclick="openLightbox('photo5.jpg')">
       <div class="gallery-caption">Оплата при отриманні, доставка по всій Україні</div>
+    </div>
+
+    <h2>Як замовити</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text"><b>Оформіть замовлення</b><span>Натисніть кнопку "Замовити зараз" та напишіть боту в Telegram</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text"><b>Швидка доставка</b><span>Укрпоштою або Новою поштою протягом 1-3 днів по всій Україні</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text"><b>Оплата при отриманні</b><span>Оплачуєте лише після того, як отримаєте товар на руки</span></div>
+      </div>
     </div>
 
     <div class="gallery-item">
