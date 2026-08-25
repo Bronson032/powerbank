@@ -22,23 +22,22 @@
     margin-top: 20px;
     color: #222222;
   }
-  .photo-main {
+  .gallery-item {
+    margin: 20px 0;
+  }
+  .gallery-item img {
     width: 100%;
-    max-width: 320px;
     border-radius: 12px;
-    margin: 20px 0 10px 0;
+    cursor: pointer;
   }
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 6px;
-    margin-bottom: 20px;
-  }
-  .gallery img {
-    width: 100%;
+  .gallery-caption {
+    text-align: left;
+    font-size: 16px;
+    color: #333333;
+    background: #f0f0f0;
     border-radius: 8px;
-    object-fit: cover;
-    aspect-ratio: 1 / 1;
+    padding: 12px 16px;
+    margin-top: 8px;
   }
   .price-row {
     display: flex;
@@ -57,21 +56,9 @@
     color: #222222;
     font-weight: bold;
   }
-  .features {
-    text-align: left;
-    background: #f0f0f0;
-    border-radius: 12px;
-    padding: 20px;
-    margin: 20px 0;
-  }
-  .features li {
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: #333333;
-  }
   .buy-button {
     display: block;
-    background: #444444;
+    background: #2e9e44;
     color: #ffffff;
     text-decoration: none;
     padding: 18px;
@@ -81,46 +68,87 @@
     margin: 25px 0;
   }
   .buy-button:active {
-    background: #222222;
+    background: #237a35;
   }
   .footer {
     font-size: 13px;
     color: #888888;
     margin-top: 30px;
   }
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+  }
+  .lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+  }
 </style>
 </head>
 <body>
   <div class="container">
     <h1>Повербанк Neobatta N-918</h1>
-    <img class="photo-main" src="photo1.jpg" alt="Повербанк Neobatta N-918">
-    <div class="gallery">
-      <img src="photo2.jpg" alt="фото 2">
-      <img src="photo3.jpg" alt="фото 3">
-      <img src="photo4.jpg" alt="фото 4">
-      <img src="photo5.jpg" alt="фото 5">
-      <img src="photo6.jpg" alt="фото 6">
-    </div>
-    <p>20000 мАг, швидка зарядка 100Вт, кабель у подарунок</p>
 
     <div class="price-row">
       <span class="old-price">2999 грн</span>
       <span class="price">2199 грн</span>
     </div>
 
-    <div class="features">
-      <ul>
-        <li>Об'єм акумулятора 20000 мАг вистачить на кілька повних зарядок телефону</li>
-        <li>Швидка зарядка 100Вт заряджає телефон за лічені хвилини</li>
-        <li>Кабель у комплекті як подарунок</li>
-        <li>Компактний та зручний для щоденного використання</li>
-        <li>Оплата при отриманні, доставка по всій Україні</li>
-      </ul>
+    <div class="gallery-item">
+      <img src="photo1.jpg" alt="Повербанк Neobatta N-918" onclick="openLightbox('photo1.jpg')">
+      <div class="gallery-caption">Об'єм акумулятора 20000 мАг вистачить на кілька повних зарядок телефону</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="photo2.jpg" alt="фото 2" onclick="openLightbox('photo2.jpg')">
+      <div class="gallery-caption">Швидка зарядка 100Вт заряджає телефон за лічені хвилини</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="photo3.jpg" alt="фото 3" onclick="openLightbox('photo3.jpg')">
+      <div class="gallery-caption">Кабель у комплекті як подарунок</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="photo4.jpg" alt="фото 4" onclick="openLightbox('photo4.jpg')">
+      <div class="gallery-caption">Компактний та зручний для щоденного використання</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="photo5.jpg" alt="фото 5" onclick="openLightbox('photo5.jpg')">
+      <div class="gallery-caption">Оплата при отриманні, доставка по всій Україні</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="photo6.jpg" alt="фото 6" onclick="openLightbox('photo6.jpg')">
     </div>
 
     <a class="buy-button" href="https://t.me/dropshiporders2026_bot">Замовити зараз</a>
 
     <div class="footer">Натисніть кнопку, щоб перейти у Telegram та оформити замовлення</div>
   </div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="">
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
