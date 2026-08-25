@@ -22,11 +22,23 @@
     margin-top: 20px;
     color: #222222;
   }
-  .photo {
+  .photo-main {
     width: 100%;
     max-width: 320px;
     border-radius: 12px;
-    margin: 20px 0;
+    margin: 20px 0 10px 0;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .gallery img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
   }
   .price-row {
     display: flex;
@@ -81,7 +93,14 @@
 <body>
   <div class="container">
     <h1>Повербанк Neobatta N-918</h1>
-    <img class="photo" src="photo.jpg" alt="Повербанк Neobatta N-918">
+    <img class="photo-main" src="photo1.jpg" alt="Повербанк Neobatta N-918">
+    <div class="gallery">
+      <img src="photo2.jpg" alt="фото 2">
+      <img src="photo3.jpg" alt="фото 3">
+      <img src="photo4.jpg" alt="фото 4">
+      <img src="photo5.jpg" alt="фото 5">
+      <img src="photo6.jpg" alt="фото 6">
+    </div>
     <p>20000 мАг, швидка зарядка 100Вт, кабель у подарунок</p>
 
     <div class="price-row">
