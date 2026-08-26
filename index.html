@@ -21,229 +21,323 @@ fbq('track', 'PageView');
 <!-- End Facebook Pixel Code -->
 
 <style>
+  * { box-sizing: border-box; }
   body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #ffffff;
-    color: #333333;
-    text-align: center;
+    background: #0b1120;
+    color: #e2e8f0;
   }
-  .container {
-    max-width: 480px;
+  a { text-decoration: none; }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #0f172a;
+    border-bottom: 1px solid #1e293b;
+    padding: 14px 20px;
+  }
+  .logo {
+    color: #4ade80;
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+  }
+  .top-btn {
+    background: #22c55e;
+    color: #06210f;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .wrap {
+    max-width: 1100px;
     margin: 0 auto;
     padding: 20px;
   }
-  .badge {
-    display: inline-block;
-    background: #2e9e44;
-    color: #ffffff;
-    font-size: 13px;
-    font-weight: bold;
-    padding: 6px 14px;
-    border-radius: 20px;
-    margin-bottom: 10px;
-  }
-  h1 {
-    font-size: 22px;
-    margin: 10px 0 20px;
-    color: #222222;
-    line-height: 1.4;
-  }
-  h2 {
-    font-size: 19px;
-    color: #222222;
-    margin-top: 40px;
-  }
+
   .urgency {
-    background: #fff3e0;
-    border: 1px solid #ffb74d;
-    color: #b45309;
+    background: #1a2e1f;
+    border: 1px solid #2e9e44;
+    color: #86efac;
     font-size: 14px;
     font-weight: bold;
     border-radius: 10px;
     padding: 12px;
-    margin: 15px 0;
+    margin-bottom: 20px;
+    text-align: center;
   }
   .urgency .timer {
     font-size: 18px;
     margin-top: 4px;
-    color: #d84315;
+    color: #4ade80;
   }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 800px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: #111827;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 18px;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #4ade80;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .tag::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: #4ade80;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
   .main-photo img {
     width: 100%;
-    border-radius: 12px;
-    border: 3px solid #2e9e44;
+    border-radius: 10px;
+    display: block;
+    cursor: pointer;
+  }
+  .thumbs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .thumbs img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #1e293b;
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  .thumbs img:hover { opacity: 1; }
+
+  .eyebrow {
+    color: #4ade80;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  h1 {
+    font-size: 22px;
+    color: #f1f5f9;
+    margin: 0 0 14px;
+    line-height: 1.35;
   }
   .price-row {
     display: flex;
-    justify-content: center;
     align-items: baseline;
     gap: 12px;
-    margin: 18px 0;
+    margin-bottom: 6px;
   }
   .old-price {
-    font-size: 20px;
-    color: #999999;
+    font-size: 16px;
+    color: #64748b;
     text-decoration: line-through;
   }
   .price {
-    font-size: 32px;
-    color: #222222;
+    font-size: 30px;
+    color: #4ade80;
     font-weight: bold;
   }
+  .note {
+    font-size: 13px;
+    color: #94a3b8;
+    margin: 4px 0 18px;
+  }
+  .note b { color: #cbd5e1; }
+
   .buy-button {
     display: block;
     width: 100%;
-    background: #2e9e44;
-    color: #ffffff;
+    background: #22c55e;
+    color: #06210f;
     border: none;
-    text-decoration: none;
-    padding: 18px;
-    border-radius: 12px;
-    font-size: 20px;
+    padding: 16px;
+    border-radius: 10px;
+    font-size: 17px;
     font-weight: bold;
-    margin: 20px 0;
     cursor: pointer;
-    box-sizing: border-box;
+    margin-top: 8px;
   }
-  .buy-button:active {
-    background: #237a35;
-  }
-  .order-form {
-    text-align: left;
-    background: #f7f7f7;
-    border-radius: 12px;
-    padding: 20px;
-    margin: 20px 0;
-  }
+  .buy-button:active { background: #16a34a; }
+
   .order-form label {
     display: block;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     margin: 12px 0 6px;
-    color: #222222;
+    color: #cbd5e1;
   }
   .order-form input,
   .order-form select {
     width: 100%;
     padding: 12px;
     border-radius: 8px;
-    border: 1px solid #cccccc;
-    font-size: 15px;
-    box-sizing: border-box;
+    border: 1px solid #334155;
+    background: #0b1120;
+    color: #e2e8f0;
+    font-size: 14px;
   }
-  .desc-block {
-    text-align: left;
-    background: #f7f7f7;
-    border-radius: 12px;
-    padding: 18px;
-    margin: 20px 0;
-    font-size: 15px;
+  .order-form input::placeholder { color: #64748b; }
+
+  .section-title {
+    font-size: 18px;
+    color: #f1f5f9;
+    margin: 0 0 14px;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  @media (max-width: 800px) {
+    .two-col { grid-template-columns: 1fr; }
+  }
+
+  .check-list { list-style: none; margin: 0; padding: 0; }
+  .check-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: #cbd5e1;
+    padding: 8px 0;
+    border-bottom: 1px solid #1e293b;
+  }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list .mark {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    background: #16362a;
+    border: 1px solid #22c55e;
+    border-radius: 4px;
+    color: #4ade80;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  .specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .spec-box {
+    background: #0b1120;
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 13px;
+    color: #cbd5e1;
+  }
+  .spec-box b { display: block; color: #f1f5f9; font-size: 13px; margin-bottom: 3px; }
+
+  .desc-text {
+    font-size: 14px;
+    color: #94a3b8;
     line-height: 1.6;
   }
-  .gallery-item {
-    margin: 20px 0;
+  .desc-text b { color: #e2e8f0; }
+
+  .gallery-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 20px;
   }
-  .gallery-item img {
+  @media (max-width: 800px) {
+    .gallery-strip { grid-template-columns: 1fr; }
+  }
+  .gallery-strip img {
     width: 100%;
-    border-radius: 12px;
+    border-radius: 10px;
+    border: 1px solid #1e293b;
     cursor: pointer;
   }
   .gallery-caption {
-    text-align: left;
-    font-size: 15px;
-    color: #333333;
-    background: #f0f0f0;
-    border-radius: 8px;
-    padding: 12px 16px;
-    margin-top: 8px;
+    font-size: 13px;
+    color: #94a3b8;
+    margin-top: 6px;
   }
-  .tiles {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin: 20px 0;
-  }
-  .tile {
-    background: #f7f7f7;
-    border-radius: 12px;
-    padding: 16px 10px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #222222;
-  }
-  .tile .emoji {
-    font-size: 28px;
-    display: block;
-    margin-bottom: 8px;
-  }
-  .specs {
-    text-align: left;
-    background: #f7f7f7;
-    border-radius: 12px;
-    padding: 18px 22px;
-    margin: 20px 0;
-    font-size: 15px;
-    line-height: 1.9;
-  }
-  .steps {
-    text-align: left;
-    margin: 20px 0;
-  }
+
+  .steps { margin-top: 14px; }
   .step {
     display: flex;
     gap: 14px;
     align-items: flex-start;
-    background: #f7f7f7;
-    border-radius: 12px;
-    padding: 14px 16px;
-    margin-bottom: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #1e293b;
   }
+  .step:last-child { border-bottom: none; }
   .step-num {
     flex-shrink: 0;
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    background: #2e9e44;
-    color: #ffffff;
+    background: #16362a;
+    border: 1px solid #22c55e;
+    color: #4ade80;
     font-weight: bold;
+    font-size: 13px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .step-text b {
-    display: block;
-    font-size: 15px;
-    color: #222222;
-    margin-bottom: 3px;
-  }
-  .step-text span {
-    font-size: 13px;
-    color: #666666;
-  }
+  .step-text b { display: block; font-size: 14px; color: #f1f5f9; margin-bottom: 2px; }
+  .step-text span { font-size: 13px; color: #94a3b8; }
+
   .telegram-alt {
-    font-size: 14px;
-    color: #666666;
-    margin-top: 25px;
-  }
-  .telegram-alt a {
-    color: #2e9e44;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  .footer {
+    text-align: center;
     font-size: 13px;
-    color: #888888;
-    margin-top: 20px;
+    color: #94a3b8;
+    margin: 30px 0 10px;
   }
+  .telegram-alt a { color: #4ade80; font-weight: bold; }
+
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: #475569;
+    padding: 20px 0 30px;
+  }
+
   .lightbox {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.9);
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.92);
     z-index: 999;
     justify-content: center;
     align-items: center;
@@ -256,106 +350,133 @@ fbq('track', 'PageView');
 </style>
 </head>
 <body>
-  <div class="container">
 
-    <div class="badge">Швидкісний кабель у подарунок</div>
-    <h1>Повербанк Neobatta N-918<br>20000 мАг, швидка зарядка 100Вт</h1>
+  <div class="topbar">
+    <div class="logo">⚡ NEOBATTA N-918</div>
+    <button class="top-btn" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Замовити зараз</button>
+  </div>
+
+  <div class="wrap">
 
     <div class="urgency">
       Акція діє до кінця тижня!
-      <div class="timer" id="countdown">--:--:--:--</div>
+      <div class="timer" id="countdown">--:--:--</div>
     </div>
 
-    <div class="main-photo">
-      <img src="photo1.jpg" alt="Повербанк Neobatta N-918" onclick="openLightbox('photo1.jpg')">
-    </div>
+    <div class="grid">
 
-    <div class="price-row">
-      <span class="old-price">2999 грн</span>
-      <span class="price">2199 грн</span>
-    </div>
-
-    <!-- ФОРМА ЗАМОВЛЕННЯ -->
-    <form class="order-form" action="https://formspree.io/f/xoeaggoo" method="POST">
-      <label for="name">Ім'я</label>
-      <input type="text" id="name" name="name" placeholder="Ваше ім'я" required>
-
-      <label for="phone">Телефон</label>
-      <input type="tel" id="phone" name="phone" placeholder="+380..." required>
-
-      <label for="delivery">Спосіб доставки</label>
-      <select id="delivery" name="delivery" required>
-        <option value="Нова Пошта">Нова Пошта</option>
-        <option value="Укрпошта">Укрпошта</option>
-      </select>
-
-      <input type="hidden" name="_redirect" value="https://bronson032.github.io/powerbank/thanks.html">
-
-      <button type="submit" class="buy-button">Замовити зараз</button>
-    </form>
-
-    <h2>Якість та потужність в одному пристрої</h2>
-    <div class="desc-block">
-      Повербанк Neobatta N-918 має реальну ємність <b>20 000 мАг</b> — цього вистачить на кілька повних зарядок телефону поспіль. Функція швидкої зарядки <b>Quick Charge 100Вт</b> заряджає пристрій у рази швидше за звичайні зарядні. Компактний корпус зручно поміщається в сумку або кишеню, а кабель для зарядки йде у подарунок до кожного замовлення.
-    </div>
-
-    <div class="gallery-item">
-      <img src="photo3.jpg" alt="фото 3" onclick="openLightbox('photo3.jpg')">
-      <div class="gallery-caption">Кабель у комплекті як подарунок</div>
-    </div>
-
-    <h2>Переваги</h2>
-    <div class="tiles">
-      <div class="tile"><span class="emoji">⚡</span>Швидка зарядка 100Вт</div>
-      <div class="tile"><span class="emoji">🔋</span>Ємність 20000 мАг</div>
-      <div class="tile"><span class="emoji">🎁</span>Кабель у подарунок</div>
-      <div class="tile"><span class="emoji">📱</span>Компактний та легкий</div>
-    </div>
-
-    <div class="gallery-item">
-      <img src="photo4.jpg" alt="фото 4" onclick="openLightbox('photo4.jpg')">
-      <div class="gallery-caption">Компактний та зручний для щоденного використання</div>
-    </div>
-
-    <h2>Характеристики</h2>
-    <div class="specs">
-      <b>Модель:</b> Neobatta N-918<br>
-      <b>Ємність:</b> 20 000 мАг<br>
-      <b>Швидка зарядка:</b> Quick Charge 100Вт<br>
-      <b>Комплектація:</b> повербанк + кабель у подарунок<br>
-      <b>Оплата:</b> при отриманні
-    </div>
-
-    <div class="gallery-item">
-      <img src="photo5.jpg" alt="фото 5" onclick="openLightbox('photo5.jpg')">
-      <div class="gallery-caption">Оплата при отриманні, доставка по всій Україні</div>
-    </div>
-
-    <h2>Як замовити</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-text"><b>Оформіть замовлення</b><span>Заповніть форму вище — ім'я, телефон, спосіб доставки</span></div>
+      <div class="card">
+        <div class="tag">Живе фото товару</div>
+        <div class="main-photo">
+          <img src="photo1.jpg" alt="Повербанк Neobatta N-918" onclick="openLightbox('photo1.jpg')">
+        </div>
+        <div class="thumbs">
+          <img src="photo3.jpg" onclick="openLightbox('photo3.jpg')">
+          <img src="photo4.jpg" onclick="openLightbox('photo4.jpg')">
+          <img src="photo5.jpg" onclick="openLightbox('photo5.jpg')">
+          <img src="photo6.jpg" onclick="openLightbox('photo6.jpg')">
+        </div>
       </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-text"><b>Швидка доставка</b><span>Укрпоштою або Новою поштою протягом 1-3 днів по всій Україні</span></div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-text"><b>Оплата при отриманні</b><span>Оплачуєте лише після того, як отримаєте товар на руки</span></div>
+
+      <div class="card" id="order">
+        <div class="eyebrow">ПОВЕРБАНК 20000 МАГ · ШВИДКА ЗАРЯДКА 100ВТ</div>
+        <h1>Neobatta N-918<br>кабель у подарунок до кожного замовлення</h1>
+
+        <div class="price-row">
+          <span class="old-price">2999 грн</span>
+          <span class="price">2199 грн</span>
+        </div>
+        <div class="note">Оплата <b>при отриманні</b>. Доставка по всій Україні.</div>
+
+        <form class="order-form" action="https://formspree.io/f/xoeaggoo" method="POST">
+          <label for="name">Ім'я</label>
+          <input type="text" id="name" name="name" placeholder="Ваше ім'я" required>
+
+          <label for="phone">Телефон</label>
+          <input type="tel" id="phone" name="phone" placeholder="+380..." required>
+
+          <label for="delivery">Спосіб доставки</label>
+          <select id="delivery" name="delivery" required>
+            <option value="Нова Пошта">Нова Пошта</option>
+            <option value="Укрпошта">Укрпошта</option>
+          </select>
+
+          <input type="hidden" name="_redirect" value="https://bronson032.github.io/powerbank/thanks.html">
+
+          <button type="submit" class="buy-button">Замовити зараз</button>
+        </form>
       </div>
     </div>
 
-    <div class="gallery-item">
-      <img src="photo6.jpg" alt="фото 6" onclick="openLightbox('photo6.jpg')">
+    <div class="two-col">
+      <div class="card">
+        <div class="section-title">Ключові переваги</div>
+        <ul class="check-list">
+          <li><span class="mark">✓</span> Реальна ємність 20 000 мАг</li>
+          <li><span class="mark">✓</span> Швидка зарядка Quick Charge 100Вт</li>
+          <li><span class="mark">✓</span> Кабель у подарунок до кожного замовлення</li>
+          <li><span class="mark">✓</span> Компактний та зручний корпус</li>
+          <li><span class="mark">✓</span> Підходить для щоденного використання та поїздок</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="section-title">Доставка та оплата</div>
+        <div class="desc-text">
+          <b>Доставка:</b> Нова Пошта / Укрпошта, 1–3 дні по Україні.<br><br>
+          <b>Оплата:</b> при отриманні, передоплата не потрібна.<br><br>
+          <b>Гарантія:</b> перевірка товару на відділенні перед оплатою.
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <div class="section-title">Якість та потужність в одному пристрої</div>
+      <div class="desc-text">
+        Повербанк Neobatta N-918 має реальну ємність <b>20 000 мАг</b> — цього вистачить на кілька повних зарядок телефону поспіль. Функція швидкої зарядки <b>Quick Charge 100Вт</b> заряджає пристрій у рази швидше за звичайні зарядні. Компактний корпус зручно поміщається в сумку або кишеню, а кабель для зарядки йде у подарунок до кожного замовлення.
+      </div>
+
+      <div class="specs-grid">
+        <div class="spec-box"><b>Модель</b>Neobatta N-918</div>
+        <div class="spec-box"><b>Ємність</b>20 000 мАг</div>
+        <div class="spec-box"><b>Швидка зарядка</b>Quick Charge 100Вт</div>
+        <div class="spec-box"><b>Комплектація</b>повербанк + кабель у подарунок</div>
+      </div>
+    </div>
+
+    <div class="gallery-strip">
+      <div>
+        <img src="photo3.jpg" onclick="openLightbox('photo3.jpg')">
+        <div class="gallery-caption">Кабель у комплекті як подарунок</div>
+      </div>
+      <div>
+        <img src="photo4.jpg" onclick="openLightbox('photo4.jpg')">
+        <div class="gallery-caption">Компактний та зручний для щоденного використання</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <div class="section-title">Як замовити</div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text"><b>Оформіть замовлення</b><span>Заповніть форму вище — ім'я, телефон, спосіб доставки</span></div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text"><b>Швидка доставка</b><span>Укрпоштою або Новою поштою протягом 1-3 днів по всій Україні</span></div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text"><b>Оплата при отриманні</b><span>Оплачуєте лише після того, як отримаєте товар на руки</span></div>
+        </div>
+      </div>
     </div>
 
     <div class="telegram-alt">
       Або напишіть нам напряму: <a href="https://t.me/dropshiporders2026_bot">Telegram</a>
     </div>
-
-    <div class="footer">Заповніть форму вище, щоб оформити замовлення</div>
+    <div class="footer">© Neobatta N-918 — усі права захищені</div>
   </div>
 
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
@@ -371,7 +492,6 @@ fbq('track', 'PageView');
       document.getElementById('lightbox').style.display = 'none';
     }
 
-    // Таймер акції — рахує до кінця поточного тижня (неділя 23:59)
     function updateCountdown() {
       const now = new Date();
       const end = new Date();
