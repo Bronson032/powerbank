@@ -30,6 +30,7 @@ fbq('track', 'PageView');
   }
   a { text-decoration: none; }
 
+  /* Шапка */
   .topbar {
     position: sticky;
     top: 0;
@@ -81,6 +82,7 @@ fbq('track', 'PageView');
     color: #4ade80;
   }
 
+  /* Основной грид: фото + карточка справа */
   .grid {
     display: grid;
     grid-template-columns: 1.3fr 1fr;
@@ -206,6 +208,7 @@ fbq('track', 'PageView');
   }
   .order-form input::placeholder { color: #64748b; }
 
+  /* Секции ниже */
   .section-title {
     font-size: 18px;
     color: #f1f5f9;
@@ -365,6 +368,7 @@ fbq('track', 'PageView');
 
     <div class="grid">
 
+      <!-- Левая колонка: фото -->
       <div class="card">
         <div class="tag">Живе фото товару</div>
         <div class="main-photo">
@@ -378,6 +382,7 @@ fbq('track', 'PageView');
         </div>
       </div>
 
+      <!-- Правая колонка: цена + форма -->
       <div class="card" id="order">
         <div class="eyebrow">ПОВЕРБАНК 20000 МАГ · ШВИДКА ЗАРЯДКА 100ВТ</div>
         <h1>Neobatta N-918<br>кабель у подарунок до кожного замовлення</h1>
@@ -389,6 +394,7 @@ fbq('track', 'PageView');
         <div class="note">Оплата <b>при отриманні</b>. Доставка по всій Україні.</div>
 
         <form class="order-form" action="https://formspree.io/f/xoeaggoo" method="POST">
+        <input type="hidden" name="_next" value="https://bronson032.github.io/powerbank/thanks.html">
           <label for="name">Ім'я</label>
           <input type="text" id="name" name="name" placeholder="Ваше ім'я" required>
 
@@ -408,6 +414,7 @@ fbq('track', 'PageView');
       </div>
     </div>
 
+    <!-- Нижний блок: переваги + доставка -->
     <div class="two-col">
       <div class="card">
         <div class="section-title">Ключові переваги</div>
@@ -430,6 +437,7 @@ fbq('track', 'PageView');
       </div>
     </div>
 
+    <!-- Описание -->
     <div class="card" style="margin-top:20px;">
       <div class="section-title">Якість та потужність в одному пристрої</div>
       <div class="desc-text">
@@ -444,6 +452,7 @@ fbq('track', 'PageView');
       </div>
     </div>
 
+    <!-- Фото-галерея -->
     <div class="gallery-strip">
       <div>
         <img src="photo3.jpg" onclick="openLightbox('photo3.jpg')">
@@ -455,6 +464,7 @@ fbq('track', 'PageView');
       </div>
     </div>
 
+    <!-- Как заказать -->
     <div class="card" style="margin-top:20px;">
       <div class="section-title">Як замовити</div>
       <div class="steps">
