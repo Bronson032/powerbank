@@ -393,7 +393,7 @@ fbq('track', 'PageView');
         </div>
         <div class="note">Оплата <b>при отриманні</b>. Доставка по всій Україні.</div>
 
-        <form class="order-form" action="https://formspree.io/f/xoeaggoo" method="POST">
+        <form class="order-form" id="orderForm" action="https://formspree.io/f/xoeaggoo" method="POST">
         <input type="hidden" name="_next" value="https://bronson032.github.io/powerbank/thanks.html">
           <label for="name">Ім'я</label>
           <input type="text" id="name" name="name" placeholder="Ваше ім'я" required>
@@ -522,6 +522,24 @@ fbq('track', 'PageView');
     }
     setInterval(updateCountdown, 1000);
     updateCountdown();
+  </script>
+  <script>
+    const orderForm = document.getElementById('orderForm');
+    if (orderForm) {
+      orderForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const data = new FormData(orderForm);
+        fetch(orderForm.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        }).then(function() {
+          window.location.href = 'https://bronson032.github.io/powerbank/thanks.html';
+        }).catch(function() {
+          window.location.href = 'https://bronson032.github.io/powerbank/thanks.html';
+        });
+      });
+    }
   </script>
 </body>
 </html>
