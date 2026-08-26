@@ -4,6 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Повербанк Neobatta N-918</title>
+
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1467955901825651');
+fbq('track', 'PageView');
+</script>
+<!-- End Facebook Pixel Code -->
+
 <style>
   body {
     margin: 0;
@@ -38,6 +54,21 @@
     color: #222222;
     margin-top: 40px;
   }
+  .urgency {
+    background: #fff3e0;
+    border: 1px solid #ffb74d;
+    color: #b45309;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 12px;
+    margin: 15px 0;
+  }
+  .urgency .timer {
+    font-size: 18px;
+    margin-top: 4px;
+    color: #d84315;
+  }
   .main-photo img {
     width: 100%;
     border-radius: 12px;
@@ -62,17 +93,44 @@
   }
   .buy-button {
     display: block;
+    width: 100%;
     background: #2e9e44;
     color: #ffffff;
+    border: none;
     text-decoration: none;
     padding: 18px;
     border-radius: 12px;
     font-size: 20px;
     font-weight: bold;
     margin: 20px 0;
+    cursor: pointer;
+    box-sizing: border-box;
   }
   .buy-button:active {
     background: #237a35;
+  }
+  .order-form {
+    text-align: left;
+    background: #f7f7f7;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  .order-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 12px 0 6px;
+    color: #222222;
+  }
+  .order-form input,
+  .order-form select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #cccccc;
+    font-size: 15px;
+    box-sizing: border-box;
   }
   .desc-block {
     text-align: left;
@@ -163,10 +221,20 @@
     font-size: 13px;
     color: #666666;
   }
+  .telegram-alt {
+    font-size: 14px;
+    color: #666666;
+    margin-top: 25px;
+  }
+  .telegram-alt a {
+    color: #2e9e44;
+    font-weight: bold;
+    text-decoration: none;
+  }
   .footer {
     font-size: 13px;
     color: #888888;
-    margin-top: 30px;
+    margin-top: 20px;
   }
   .lightbox {
     display: none;
@@ -193,6 +261,11 @@
     <div class="badge">Швидкісний кабель у подарунок</div>
     <h1>Повербанк Neobatta N-918<br>20000 мАг, швидка зарядка 100Вт</h1>
 
+    <div class="urgency">
+      Акція діє до кінця тижня!
+      <div class="timer" id="countdown">--:--:--:--</div>
+    </div>
+
     <div class="main-photo">
       <img src="photo1.jpg" alt="Повербанк Neobatta N-918" onclick="openLightbox('photo1.jpg')">
     </div>
@@ -202,7 +275,24 @@
       <span class="price">2199 грн</span>
     </div>
 
-    <a class="buy-button" href="https://t.me/dropshiporders2026_bot">Замовити зараз</a>
+    <!-- ФОРМА ЗАМОВЛЕННЯ -->
+    <form class="order-form" action="https://formspree.io/f/xoeaggoo" method="POST">
+      <label for="name">Ім'я</label>
+      <input type="text" id="name" name="name" placeholder="Ваше ім'я" required>
+
+      <label for="phone">Телефон</label>
+      <input type="tel" id="phone" name="phone" placeholder="+380..." required>
+
+      <label for="delivery">Спосіб доставки</label>
+      <select id="delivery" name="delivery" required>
+        <option value="Нова Пошта">Нова Пошта</option>
+        <option value="Укрпошта">Укрпошта</option>
+      </select>
+
+      <input type="hidden" name="_redirect" value="https://bronson032.github.io/powerbank/thanks.html">
+
+      <button type="submit" class="buy-button">Замовити зараз</button>
+    </form>
 
     <h2>Якість та потужність в одному пристрої</h2>
     <div class="desc-block">
@@ -245,7 +335,7 @@
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
-        <div class="step-text"><b>Оформіть замовлення</b><span>Натисніть кнопку "Замовити зараз" та напишіть боту в Telegram</span></div>
+        <div class="step-text"><b>Оформіть замовлення</b><span>Заповніть форму вище — ім'я, телефон, спосіб доставки</span></div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
@@ -261,9 +351,11 @@
       <img src="photo6.jpg" alt="фото 6" onclick="openLightbox('photo6.jpg')">
     </div>
 
-    <a class="buy-button" href="https://t.me/dropshiporders2026_bot">Замовити зараз</a>
+    <div class="telegram-alt">
+      Або напишіть нам напряму: <a href="https://t.me/dropshiporders2026_bot">Telegram</a>
+    </div>
 
-    <div class="footer">Натисніть кнопку, щоб перейти у Telegram та оформити замовлення</div>
+    <div class="footer">Заповніть форму вище, щоб оформити замовлення</div>
   </div>
 
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
@@ -278,6 +370,28 @@
     function closeLightbox() {
       document.getElementById('lightbox').style.display = 'none';
     }
+
+    // Таймер акції — рахує до кінця поточного тижня (неділя 23:59)
+    function updateCountdown() {
+      const now = new Date();
+      const end = new Date();
+      const daysUntilSunday = (7 - now.getDay()) % 7;
+      end.setDate(now.getDate() + (daysUntilSunday === 0 ? 7 : daysUntilSunday));
+      end.setHours(23, 59, 59, 0);
+
+      const diff = end - now;
+      if (diff <= 0) {
+        document.getElementById('countdown').textContent = '00:00:00';
+        return;
+      }
+      const h = Math.floor(diff / (1000 * 60 * 60));
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+      document.getElementById('countdown').textContent =
+        String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
   </script>
 </body>
 </html>
